@@ -14,9 +14,11 @@
     let tbodyContent = "";
     members.forEach(member => {
     console.log(member);
+    
+   
     let tr =`
         <tr>
-        <td>${member.first_name} ${member.second_name} ${member.last_name}</td>
+        <td>${member.first_name} ${member.middle_name===null? '' : member.middle_name} ${member.last_name}</td>
         <td>${member.party}</td>
         <td>${member.state}</td>
         <td>${member.seniority}</td>
