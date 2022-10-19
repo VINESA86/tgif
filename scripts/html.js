@@ -13,9 +13,8 @@
 
     let tbodyContent = "";
     members.forEach(member => {
-    console.log(member);
+    console.log(member);//function to create a table 
     
-   
     let tr =`
         <tr>
         <td>${member.first_name} ${member.middle_name===null? '' : member.middle_name} ${member.last_name}</td>
@@ -23,7 +22,8 @@
         <td>${member.state}</td>
         <td>${member.seniority}</td>
         <td>${member.votes_with_party_pct}</td>
-    </tr>
+        <td>${member.url === null? member.facebook_account : member.url}</td>
+        </tr>
     `; 
     tbodyContent += tr;
     })
@@ -36,10 +36,16 @@
 
 fetchJson();
 
+const parties = {
+    D: 'Democrat',
+    R: 'Republican',
+    ID: 'Independent'
+  }//function to create parties filter. Use Object.keys(parties) and Object.values(parties)
 
 
 
-//function to create a table 
+
+
 
 
 
