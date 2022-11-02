@@ -2,7 +2,7 @@
  let members
 const fetchJson = async () => {
    
-    const response =  await  fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
+    const response =  await  fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
 	method: "GET",
 	headers: {
     'X-API-KEY': 'g2lQIwb9v51mUxgD4lachz2DRzeIx04sUqEBcY14'
@@ -10,14 +10,17 @@ const fetchJson = async () => {
 })
 .then(data => data.json())
 .then(table => {
+                
        members = table.results[0].members;
+       let indipendet = [...members].filter((element)=>element.party==="ID");
+       console.log(indipendet,'test ind')
    
     
 //Creating members table in async mode
 createTable(members);
 populatedrop(members);
 //filter_party(members);
-    
+ 
 })
 .catch(error=> console.log('ERR ',error))
 }
@@ -29,18 +32,18 @@ let selected_party_members = [];
 
 function populatedrop(membersArr) {
     let stateArray = [...new Set(membersArr.map(member => member.state).sort())];
-    console.log(stateArray,'STATE');
+    
 
     let dropDown = document.getElementById("state_list");
    
 
     for (let i = 0; i < stateArray.length; i++) {
-        console.log(stateArray);
+     
         //modificare qui 
 
         let option = document.createElement("option");
         option.setAttribute("value", stateArray[i]);
-        console.log(option);
+        
         txt = document.createTextNode(stateArray[i]);
 
         option.appendChild(txt);
@@ -82,70 +85,70 @@ function createTable(members){
 
 //listen events
 document.getElementById("dem").addEventListener("click", function (e) {
-    console.log(e.target.value)
+   
     filter_party(members);
 });
     document.getElementById("rep").addEventListener("click", function (e) {
     filter_party(members);
-    console.log(e.target.value)
+    
 });
     document.getElementById("ind").addEventListener("click", function (e) {
-    filter_party(members)
-    console.log(e.target.value)
+        console.log("holaa");
+        filter_party(members)
+   
 });
     document.getElementById("state_list").addEventListener("change", function (e) {
-        console.log(e.target.value)
+       console.log(e.target.value);
     filter_party(members)
 });
 
 
 //filter function
 
-function filter_party(array) {
-    console.log(array,'ciao2dsfsdfas')
-        /*
-         */
+
+function filter_party(membersArray) {
+    
+        
         let selected_state = document.getElementById("state_list").value;
         let selected_party_members = [];
     
-        for (let i = 0; i < array.length; i++) {
-            if ((document.getElementById("dem").checked && array[i].party == "D") && (selected_state == array[i].state || selected_state == "ALL")) {
-               
-                selected_party_members=arr[i].filter((x)=>x.party==="D");
+        for (let i = 0; i < membersArray.length; i++) {
+            if((document.getElementById("dem").checked && membersArray[i].party=="D") &&  (selected_state==="ALL" ||selected_state == membersArray[i].state)){
+                console.log('democratic');
+                selected_party_members.push(membersArray[i]);
             }
-            if ((document.getElementById("rep").checked && array[i].party == "R") && (selected_state == array[i].state || selected_state == "ALL")) {
+         
+            if ((document.getElementById("rep").checked && membersArray[i].party == "R") && (selected_state == membersArray[i].state || selected_state == "ALL")) {
                 
     
-                selected_party_members=arr[i].filter((x)=>x.party==="R");
+                selected_party_members.push(membersArray[i]);
             }
     
     
-            if ((document.getElementById("ind").checked && array[i].party == "I") && (selected_state == array[i].state || selected_state == "ALL")) {
-                
+            if ((document.getElementById("ind").checked && membersArray[i].party == "ID") /*&& (selected_state == membersArray[i].state || selected_state == "ALL")*/) {
+               console.log ("ciaoooooo");
     
-                selected_party_members=arr[i].filter((x)=>x.party==="I");
-                
+                selected_party_members.push(membersArray[i]);
             }
     
             if (document.getElementById("dem").checked == false && (document.getElementById("ind").checked == false) && (document.getElementById("rep").checked == false) && (selected_state == "ALL")
     
-
+    
             ) {
     
-                console.log("Emtra aquèi 33")
-                
-                selected_party_members = array;
+              
+    
+                selected_party_members = membersArray;
     
             }
-            if (document.getElementById("dem").checked == false && (document.getElementById("ind").checked == false) && (document.getElementById("rep").checked == false) && (selected_state == array[i].state)) {
-                selected_party_members=arr[i].filter((x)=>x.state===selected_state);
+            if (document.getElementById("dem").checked == false && (document.getElementById("ind").checked == false) && (document.getElementById("rep").checked == false) && (selected_state == membersArray[i].state)) {
+                selected_party_members.push(membersArray[i]);
             }
         }
     
-        console.log("Emtra aquèi SALE")
-    
+     
         //cambiare il parametro build table
-            console.log(selected_party_members,'ciao')
+    
         createTable(selected_party_members)
     }
 
