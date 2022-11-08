@@ -12,32 +12,53 @@
     
     <body>
       <a class="logo" href="./home.html">TGIF</a>
-      <nav>
-        <ul>
-          <li><a class="button" href="./home.html">Home</a></li>
-          <li class="dropdown">
-            <button class="button dropdown-btn">Congress 113</button>
-            <ul class="dropdown-items">
-              <li><a href="./senate.html">Senate</a></li>
-              <li><a href="./house.html">House</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <button class="button dropdown-btn">Attendance</button>
-            <ul class="dropdown-items">
-              <li><a href="./senate-attendance.html">Senate</a></li>
-              <li><a href="./house-attendance.html">House</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <button class="button dropdown-btn">Loyalty</button>
-            <ul class="dropdown-items">
-              <li><a href="./senate-loyalty.html">Senate</a></li>
-              <li><a href="./house-loyalty.html">House</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+      <!---------navbar bootstrap begin------------>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+       
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+      
+    <!-------dropdown  congress113----->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Congress113
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="./members.html">Senate</a></li>
+                  <li><a class="dropdown-item" href="./house.html">House</a></li>
+                </ul>
+              </li>
+              
+    <!-------dropdown  attendance----->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               attendance
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="./senate-attendance.html">Senate</a></li>
+                <li><a class="dropdown-item" href="./house-attendance.html">House</a></li>
+              </ul>
+            </li>
+    <!-----------Loyalty------->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                loyalty
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="./senate-loyalty.html">Senate</a></li>
+                  <li><a class="dropdown-item" href="./house-loyalty.html">House</a></li>
+                </ul>
+              </li>
+              
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
 
     <div>
       <h1>Party Loyalty</h1>
@@ -165,6 +186,13 @@
           </tr>
         </tbody>
       </table>
+<!--bootstrap footer-->
+      <div class="footercontainer">
+        <div class="col" style="background-color: rgb(215, 210, 210);">
+          <p>2016 TGIF | All Rights Reserved</p>
+        </div>
+      </div>
+
   	</div>
     <script src="../scripts/tgif.js"></script>
 <!--Bootstrap JS-->

@@ -1,32 +1,35 @@
- //fetch functioN
- let members;
+//fetch functioN house
+let houseMembers;
 const fetchJson = async () => {
-    const response =  await fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
+    const response =  await fetch("https://api.propublica.org/congress/v1/102/house/members.json", {
         method: "GET",
         headers: {
-        'X-API-KEY': 'g2lQIwb9v51mUxgD4lachz2DRzeIx04sUqEBcY14'
-    }
-})
-.then(data => data.json())//we use .json method 
-.then(table => {
-    console.log('**** RUN', table)
-                
-       members = table.results[0].members;
-       let indipendet = [...members].filter((element)=>element.party==="ID");
-       console.log(indipendet,'test ind')
-   
-    
-//Creating members table in async mode
-createTable(members);
-//Creating filter_party(members);
-populatedrop(members);
+            'X-API-KEY': 'g2lQIwb9v51mUxgD4lachz2DRzeIx04sUqEBcY14'
+        }
+    })
+    //.catch(error=> console.log('ERR ',error))
+    .then(data => {
+        console.log('** DATA :', data);
+        return data.json();
+    })
+    .then(table => {
+        console.log(table,'test');
+        houseMembers = table.results[0].members;
+        let indipendet = [...houseMembers].filter((element)=>element.party==="ID");
 
- 
-})
-.catch(error=> console.log('ERR ',error))
+//Creating members table in async mode:
+createTable(houseMembers);
+//Creating dropdown in async mode:
+populatedrop(houseMembers);
+
+    })
 }
 
 fetchJson();
+
+
+
+
 
 
 
@@ -67,7 +70,6 @@ function createTable(members){
          <td>${member.state}</td>
          <td>${member.seniority}</td>
          <td>${member.votes_with_party_pct}</td>
-         <td>${member.url === null? '' : member.facebook_account}</td>
          </tr>
      `; 
     tbodyContent += tr;
@@ -79,18 +81,21 @@ function createTable(members){
 
 //listen events
     document.getElementById("dem").addEventListener("click", function (e) {
-    filter_party(members);
+   
+    filter_party(houseMembers);
 });
     document.getElementById("rep").addEventListener("click", function (e) {
-    filter_party(members); 
+    filter_party(houseMembers);
+    
 });
     document.getElementById("ind").addEventListener("click", function (e) {
         console.log("holaa");
-    filter_party(members)
+        filter_party(houseMembers)
+   
 });
     document.getElementById("state_list").addEventListener("change", function (e) {
        console.log(e.target.value);
-    filter_party(members)
+    filter_party(houseMembers)
 });
 
 
@@ -112,13 +117,12 @@ function filter_party(membersArray) {
             }
     
             if ((document.getElementById("ind").checked && membersArray[i].party == "ID") /*&& (selected_state == membersArray[i].state || selected_state == "ALL")*/) {
-                console.log ("ciaoooooo");
+               console.log ("ciaoooooo");
                 selected_party_members.push(membersArray[i]);
             }
     
             if (document.getElementById("dem").checked == false && (document.getElementById("ind").checked == false) && (document.getElementById("rep").checked == false) && (selected_state == "ALL")) {
                 selected_party_members = membersArray;
-    
             }
             if (document.getElementById("dem").checked == false && (document.getElementById("ind").checked == false) && (document.getElementById("rep").checked == false) && (selected_state == membersArray[i].state)) {
                 selected_party_members.push(membersArray[i]);
@@ -126,7 +130,7 @@ function filter_party(membersArray) {
         }
     
      
-        //Creating table filters
+        //cambiare il parametro build table
     
         createTable(selected_party_members)
     }
