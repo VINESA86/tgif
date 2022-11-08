@@ -89,13 +89,13 @@ function createTable(members){
     
 });
     document.getElementById("ind").addEventListener("click", function (e) {
-        console.log("holaa");
-        filter_party(houseMembers)
+        
+    filter_party(houseMembers);
    
 });
     document.getElementById("state_list").addEventListener("change", function (e) {
-       console.log(e.target.value);
-    filter_party(houseMembers)
+       
+    filter_party(houseMembers);
 });
 
 

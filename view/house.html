@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="./home.html">Home</a>
             </li>
       
     <!-------dropdown  congress113----->
@@ -65,30 +65,36 @@
       <h1>Congressmen</h1>
       <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
       <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
-     	 
-      <!--Checkboxes Filter by party-->
-      <div class="form-check form-check-inline">
-        <p>Filter by Party</p>
-        <input class="form-check-input" type="checkbox" id="rep" value="R">
-        <label class="form-check-label" for="inlineCheckbox1">Republican</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="dem" value="D">
-        <label class="form-check-label" for="inlineCheckbox2">Democrat</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="ind" value="ID">
-        <label class="form-check-label" for="inlineCheckbox3">Independent</label>
-      </div>
-<!--Filter by states-->
-      <div class="checkk2">
-        <b><p>Filter by States:</p></b>
-      </div>
-            <select id="state_list" class="form-select" aria-label="All states" style="width: 20%;"> 
-              <option selected>ALL</option> 
-      
-            </select>
+    
+    <!--Bootstrap checkboxes and dropdown--> 	
+        <div class="container">
+          <div class="row">
+            <div class="col">Filter by Party
+    <!--Checkboxes Filter by party-->
+            <div class="form-check form-check-inline"> 
+              <input class="form-check-input" type="checkbox" id="rep" value="R">
+              <label class="form-check-label" for="inlineCheckbox1">Republican</label>
             </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="dem" value="D">
+              <label class="form-check-label" for="inlineCheckbox2">Democrat</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="ind" value="ID">
+              <label class="form-check-label" for="inlineCheckbox3">Independent</label>
+            </div>
+            </div>
+
+    <!--Filter by states-->
+          <div class="col-md-auto">Filter by States</div>
+               <div class="col col-lg-1">
+                <select id="state_list" class="form-select" aria-label="All states" style="width: 20%;"> 
+                  <option selected>ALL</option> 
+                </select>
+            </div>
+          </div>
+        </div>
+
 <!--Table-->
     <div class="container">
       <table class="table">
@@ -105,70 +111,6 @@
       </tbody>
       </table>
       
-<!--bootstrap footer-->
-      <!---<table>
-          <thead>
-            <tr>
-                <th>Name</th>
-                <th>Party</th>
-                <th>State</th>
-                <th>Years in Office</th>
-                <th>% Votes with Party</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="https://adams.house.gov">Alma Adams</a></td>
-                <td>D</td>
-                <td>NC</td>
-                <td>2</td>
-                <td>98</td>
-            </tr>
-            <tr>
-                <td><a href="https://aderholt.house.gov">Robert B. Aderholt</a></td>
-                <td>R</td>
-                <td>AL</td>
-                <td>18</td>
-                <td>94</td>
-            </tr>
-            <tr>
-                <td>Rodney Alexander</td>
-                <td>R</td>
-                <td>LA</td>
-                <td>12</td>
-                <td>92</td>
-            </tr>
-            <tr>
-                <td><a href="https://amash.house.gov">Justin Amash</a></td>
-                <td>R</td>
-                <td>MI</td>
-                <td>4</td>
-                <td>77</td>
-            </tr>
-            <tr>
-                <td><a href="https://amodei.house.gov">Mark Amodei</a></td>
-                <td>R</td>
-                <td>NV</td>
-                <td>4</td>
-                <td>94</td>
-            </tr>
-            <tr>
-                <td><a href="http://andrews.house.gov/">Robert E. Andrews</a></td>
-                <td>D</td>
-                <td>NJ</td>
-                <td>26</td>
-                <td>90</td>
-            </tr>
-            <tr>
-                <td><a href="http://bachmann.house.gov">Michele Bachmann</a></td>
-                <td>R</td>
-                <td>MN</td>
-                <td>8</td>
-                <td>94</td>
-            </tr>
-        </tbody>
-      </table>
-	  </div>-->
 
 <!--bootstrap footer-->
     <div class="footercontainer">
