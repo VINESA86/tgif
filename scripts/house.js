@@ -136,4 +136,7 @@ function filter_party(membersArray) {
     }
 
 
-
+//[...houseMembers].sort((a,b)=>a.missed_votes-b.missed_votes)
+//[...houseMembers].sort((a,b)=>a.missed_votes-b.missed_votes).slice 
+//para hacer slice clonamos array, de este modo no afectamos el array original, asi solo manipulamos el clon del original. 
+//[...houseMembers].filter(element=>element.missed_votes_pct<10)

@@ -54,7 +54,7 @@ function populatedrop(membersArr) {
         dropDown.insertBefore(option, dropDown.lastChild);
     }
 }
-//----------------------------------------------------------------
+
 //createTable function 
 function createTable(members){    
     let tbodyContent = "";
