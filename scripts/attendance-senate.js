@@ -1,8 +1,3 @@
-//[...houseMembers].sort((a,b)=>a.missed_votes-b.missed_votes)
-//[...houseMembers].sort((a,b)=>a.missed_votes-b.missed_votes).slice 
-//para hacer slice clonamos array, de este modo no afectamos el array original, asi solo manipulamos el clon del original. 
-//[...houseMembers].filter(element=>element.missed_votes_pct<10)
-
 //fetch functioN
 let members;
 const fetchJson = async () => {
@@ -18,10 +13,9 @@ const fetchJson = async () => {
                 
        members = table.results[0].members;
 
-
+       
 //Method for order and slice members with least engaged missed votes
 let ordinateMembers = [...members].sort((a,b)=>a.missed_votes_pct-b.missed_votes_pct).slice(0,10); 
-
 //Method for order and slice members with most engaged missed votes
 let inverseOrder = [...members].sort((a,b)=>b.missed_votes_pct-a.missed_votes_pct).slice(0,10); 
 //createTable call function
